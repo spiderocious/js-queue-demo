@@ -11,7 +11,7 @@ export function generateNetworkStages(url: string): GenericPipelineStage[] {
     buildHttpRequestStage(url, parsed),
     buildServerProcessingStage(parsed),
     buildHttpResponseStage(parsed),
-    buildBrowserProcessingStage(parsed),
+    buildBrowserProcessingStage(),
   ]
 }
 
@@ -424,7 +424,7 @@ function buildHttpResponseStage(p: ParsedUrl): GenericPipelineStage {
 }
 
 // ─── Stage 9: Browser Processing ─────────────────────────────────────────
-function buildBrowserProcessingStage(p: ParsedUrl): GenericPipelineStage {
+function buildBrowserProcessingStage(): GenericPipelineStage {
   const content = [
     'Browser receives response → starts rendering pipeline',
     '',
